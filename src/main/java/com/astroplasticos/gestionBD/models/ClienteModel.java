@@ -1,4 +1,4 @@
-ppackage com.astroplasticos.gestionBD.models;
+package com.astroplasticos.gestionBD.models;
 
 import jakarta.persistence.*;
 
