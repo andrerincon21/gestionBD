@@ -1,31 +1,21 @@
 package com.astroplasticos.gestionBD.models;
 
-// Importamos librerías de persistencia
 import jakarta.persistence.*;
 
-// Indicamos que será una entidad
 @Entity
-
-// Nombre de la tabla en MySQL
 @Table(name = "pedido")
-
 public class PedidoModel {
 
-    // Llave primaria
     @Id
-
-    // Id autoincrementable
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // Nombre del cliente
-    private String cliente;
-
-    // Nombre del producto
+    private Long cliente_id;
     private String producto;
-
-    // Cantidad solicitada
     private Integer cantidad;
+
+    private Double valor_unitario;
+    private Double valor_total;
 
     // =========================
     // GETTERS Y SETTERS
@@ -35,12 +25,12 @@ public class PedidoModel {
         return id;
     }
 
-    public String getCliente() {
-        return cliente;
+    public Long getCliente_id() {
+        return cliente_id;
     }
 
-    public void setCliente(String cliente) {
-        this.cliente = cliente;
+    public void setCliente_id(Long cliente_id) {
+        this.cliente_id = cliente_id;
     }
 
     public String getProducto() {
@@ -57,5 +47,21 @@ public class PedidoModel {
 
     public void setCantidad(Integer cantidad) {
         this.cantidad = cantidad;
+    }
+
+    public Double getValor_unitario() {
+        return valor_unitario;
+    }
+
+    public void setValor_unitario(Double valor_unitario) {
+        this.valor_unitario = valor_unitario;
+    }
+
+    public Double getValor_total() {
+        return valor_total;
+    }
+
+    public void setValor_total(Double valor_total) {
+        this.valor_total = valor_total;
     }
 }
