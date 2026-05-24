@@ -1,41 +1,29 @@
 package com.astroplasticos.gestionBD.controller;
 
-// Importamos modelo usuario
 import com.astroplasticos.gestionBD.models.UserModel;
-
-// Importamos service
 import com.astroplasticos.gestionBD.services.UserService;
-
-// Librerías Spring
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-// Librería List
 import java.util.List;
 
-// Indicamos que será un controlador REST
 @RestController
-
-// Ruta principal del controlador
 @RequestMapping("/usuarios")
+public class UserController {
 
-public class LoginController {
+    private final UserService service;
 
-    // Inyección del service
-    @Autowired
-    UserService service;
+    // inyección por constructor
+    public UserController(UserService service) {
+        this.service = service;
+    }
 
-    // Método GET para consultar usuarios
     @GetMapping
     public List<UserModel> obtenerUsuarios() {
-
         return service.obtenerUsuarios();
     }
 
-    // Método POST para guardar usuarios
     @PostMapping
     public UserModel guardarUsuario(@RequestBody UserModel user) {
-
         return service.guardarUsuario(user);
     }
 }
