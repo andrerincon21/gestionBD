@@ -1,36 +1,29 @@
 package com.astroplasticos.gestionBD.services;
 
-// Importamos modelo producto
 import com.astroplasticos.gestionBD.models.ProductModel;
-
-// Importamos repository
 import com.astroplasticos.gestionBD.repositories.IProductRepository;
-
-// Librerías Spring
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-// Librería List
 import java.util.List;
 
-// Indicamos que será un servicio
 @Service
-
 public class ProductService {
 
-    // Inyección del repository
-    @Autowired
-    IProductRepository repository;
+    // dependencia (ahora es final)
+    private final IProductRepository repository;
 
-    // Método para consultar productos
+    // inyección por constructor (RECOMENDADO)
+    public ProductService(IProductRepository repository) {
+        this.repository = repository;
+    }
+
+    // consultar productos
     public List<ProductModel> obtenerProductos() {
-
         return repository.findAll();
     }
 
-    // Método para guardar productos
+    // guardar productos
     public ProductModel guardarProducto(ProductModel producto) {
-
         return repository.save(producto);
     }
 }
